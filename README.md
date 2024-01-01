@@ -1,6 +1,8 @@
 # Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes
 How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by-Step 
 
+ ![image](https://github.com/574n13y/Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes/assets/35293085/fdd348ff-60e2-4f0c-82ec-e75fbcef69cf)
+
  - Creating Two t2.medium Instances - To create two t2.medium instances on AWS EC2, follow these steps
    1. Log in to your AWS console and go to the EC2 dashboard.
    2. Click on the Launch Instance button.
@@ -30,13 +32,18 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
        
  - Installing Kubernetes on AWS EC2 Instances
  - Installing Docker on Both Instances. To install Docker on both instances, follow these steps:
-   1. SSH into one of your instances by running:
-   2. Update the package index by running:
-   3. Install Docker by running:
-   4. Start and enable the Docker service by running:
-   5. Verify that Docker is installed and running by running:
-   6. Add current user to the docker group
-   7. Repeat the same steps for the other instance.
+   1. SSH into one of your instances by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<instance-ip> ``
+   2. Replace ~/.ssh/mykey.pem with the path to your key pair file and <instance-ip> with the public IPv4 address of your instance.
+   3. Update the package index by running: `` sudo apt update ``
+   4. Install Docker by running: `` sudo apt install docker.io -y ``
+   5. Start and enable the Docker service by running:
+      ```
+      sudo systemctl start docker
+      sudo systemctl enable docker
+      ```
+   6. Verify that Docker is installed and running by running: `` sudo docker version ``
+   7. Add current user to the docker group
+   8. Repeat the same steps for the other instance.
       
  - Installing kubeadm, kubelet, and kubectl on Both Instances. To install kubeadm, kubelet, and kubectl on both instances, follow these steps:
    1. SSH into one of your instances by running:
