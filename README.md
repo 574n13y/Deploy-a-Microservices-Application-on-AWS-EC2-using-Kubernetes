@@ -80,7 +80,7 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
       sudo chown $(id -u):$(id -g) $HOME/.kube/config
       ```
-   6. Install a pod network add-on by running:
+   6. Install a pod network add-on by running: [kube-flannel.yml](https://github.com/574n13y/Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes/blob/main/kube-flannel.yml)
       ```
       kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
       ```
@@ -88,7 +88,7 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
       ```
       sudo kubeadm token create --print-join-commandsudo kubeadm token create --print-join-command
       ```
-   9. Verify that the master node is ready by running: `` kubectl get nodes ``
+   8. Verify that the master node is ready by running: `` kubectl get nodes ``
       
  - Joining the Worker Node to the Cluster
 
