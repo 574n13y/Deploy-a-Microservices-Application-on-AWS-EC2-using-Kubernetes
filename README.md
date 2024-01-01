@@ -49,19 +49,40 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
    1. SSH into one of your instances by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<instance-ip> ``
    2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<instance-ip>` with the public IPv4 address of your instance.
    3. Add the Kubernetes apt repository by running:
-   4. Install kubeadm, kubelet, and kubectl by running:
-   5. Verify that kubeadm, kubelet, and kubectl are installed by running:
+      ```
+      sudo apt update
+      sudo apt install apt-transport-https ca-certificates curl -y
+      curl -fsSL "https://packages.cloud.google.com/apt/doc/apt-key.gpg" | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/kubernetes-archive-keyring.gpg
+      echo 'deb https://packages.cloud.google.com/apt kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      ```
+   4. Install `kubeadm`, `kubelet`, and `kubectl` by running:
+      ```
+      sudo apt update
+      sudo apt install kubeadm=1.20.0-00 kubectl=1.20.0-00 kubelet=1.20.0-00 -y
+      ```
+   5. Verify that `kubeadm`, `kubelet`, and `kubectl` are installed by running:
+      ```
+      kubeadm version
+      kubelet --version
+      kubectl version --client
+      ```
    6. Repeat the same steps for the other instance.
       
  - Initializing the Master Node
- - To initialize the master node, follow these steps:
-   1. SSH into the instance that you want to use as the master node by running:
-   2. Initialize the master node by running:
-   3. Copy the join command that is displayed at the end of the output. You will need this command later to join the worker node to the cluster.
-   4. Configure your user account to use kubectl by running:
-   5. Install a pod network add-on by running:
-   6. Generate a token for worker nodes to join:
-   7. Verify that the master node is ready by running:
+ - To initialize the master node, follow these steps: 
+   1. SSH into the instance that you want to use as the master node by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<master-node-ip> ``
+   2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<master-node-ip>` with the public IPv4 address of your master node instance
+   3. Initialize the master node by running: `` sudo kubeadm init ``
+   4. Copy the join command that is displayed at the end of the output. You will need this command later to join the worker node to the cluster.
+   5. Configure your user account to use `kubectl` by running:
+      ```
+      mkdir -p $HOME/.kube
+      sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+      sudo chown $(id -u):$(id -g) $HOME/.kube/config
+      ```
+   6. Install a pod network add-on by running: ``` kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml ```
+   7. Generate a token for worker nodes to join: ``` sudo kubeadm token create --print-join-commandsudo kubeadm token create --print-join-command ```
+   8. Verify that the master node is ready by running: `` kubectl get nodes ``
       
  - Joining the Worker Node to the Cluster
 
