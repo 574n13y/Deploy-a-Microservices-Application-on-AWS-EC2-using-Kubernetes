@@ -25,15 +25,15 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
    3. Select the security group that you created in the previous step and click on the Assign Security Groups button.
    4. Repeat the same steps for the other instance.
    5. Go to your terminal and change the permissions of your key pair file by running: ``chmod 400 ~/.ssh/mykey.pem ``
-   6. Replace ~/.ssh/mykey.pem with the path to your key pair file. This will make sure that only you can read and write to your key pair file.
+   6. Replace `~/.ssh/mykey.pem` with the path to your key pair file. This will make sure that only you can read and write to your key pair file.
    7. SSH into one of your instances by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<instance-ip> ``
-   8. Replace ~/.ssh/mykey.pem with the path to your key pair file and <instance-ip> with the public IPv4 address of your instance. This will establish a secure connection to your instance using your key pair.
+   8. Replace ` ~/.ssh/mykey.pem ` with the path to your key pair file and `<instance-ip> ` with the public IPv4 address of your instance. This will establish a secure connection to your instance using your key pair.
    9. Repeat the same steps for the other instance.
        
  - Installing Kubernetes on AWS EC2 Instances
  - Installing Docker on Both Instances. To install Docker on both instances, follow these steps:
    1. SSH into one of your instances by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<instance-ip> ``
-   2. Replace ~/.ssh/mykey.pem with the path to your key pair file and <instance-ip> with the public IPv4 address of your instance.
+   2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<instance-ip> ` with the public IPv4 address of your instance.
    3. Update the package index by running: `` sudo apt update ``
    4. Install Docker by running: `` sudo apt install docker.io -y ``
    5. Start and enable the Docker service by running:
@@ -42,15 +42,16 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
       sudo systemctl enable docker
       ```
    6. Verify that Docker is installed and running by running: `` sudo docker version ``
-   7. Add current user to the docker group
+   7. Add current user to the docker group `` sudo usermod -aG docker $USER ``
    8. Repeat the same steps for the other instance.
       
- - Installing kubeadm, kubelet, and kubectl on Both Instances. To install kubeadm, kubelet, and kubectl on both instances, follow these steps:
-   1. SSH into one of your instances by running:
-   2. Add the Kubernetes apt repository by running:
-   3. Install kubeadm, kubelet, and kubectl by running:
-   4. Verify that kubeadm, kubelet, and kubectl are installed by running:
-   5. Repeat the same steps for the other instance.
+ - Installing `kubeadm`, `kubelet`, and `kubectl` on Both Instances. To install `kubeadm`, `kubelet`, and `kubectl` on both instances, follow these steps:
+   1. SSH into one of your instances by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<instance-ip> ``
+   2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<instance-ip>` with the public IPv4 address of your instance.
+   3. Add the Kubernetes apt repository by running:
+   4. Install kubeadm, kubelet, and kubectl by running:
+   5. Verify that kubeadm, kubelet, and kubectl are installed by running:
+   6. Repeat the same steps for the other instance.
       
  - Initializing the Master Node
  - To initialize the master node, follow these steps:
