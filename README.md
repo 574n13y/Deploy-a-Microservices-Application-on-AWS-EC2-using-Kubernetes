@@ -1,7 +1,7 @@
 # Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes
 How to Deploy a Microservices Application on AWS EC2 using Kubernetes: 
 
-- _**Setting up AWS EC2 Instances: We created two t2.medium instances on AWS EC2, one for the master node and one for the worker node. We also configured the security groups and SSH keys for these instances.
+- _**Setting up AWS EC2 Instances: We created two t2.medium instances on AWS EC2, one for the master node and one for the worker node. We also configured the security groups and SSH keys for these instances._**
 - Installing Kubernetes on AWS EC2 Instances: We installed Kubernetes on both instances using kubeadm, kubelet, and kubectl. We also initialized the master node and joined the worker node to the cluster.
 - Deploying the Microservices Application on Kubernetes: We deployed a microservices application that consists of a MongoDB database and a taskmaster service. The taskmaster service is a web app that allows us to create and manage tasks. The app is written in Node.js and uses MongoDB as the database. We deployed the persistent volume and persistent volume claim, the MongoDB database, the ClusterIP service for MongoDB, the taskmaster service, and the NodePort service for taskmaster.**_
 
