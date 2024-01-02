@@ -91,5 +91,14 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
    8. Verify that the master node is ready by running: `` kubectl get nodes ``
       
  - Joining the Worker Node to the Cluster
+ - To join the worker node to the cluster, follow these steps:
+   1. SSH into the instance that you want to use as the worker node by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<worker-node-ip> ``
+   2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<worker-node-ip>` with the public IPv4 address of your worker node instance.
+   3. Run the following command `` sudo kubeadm reset pre-flight checks ``
+   4. Join the worker node to the cluster by running the join command that you copied from the master node. The command should look something like this:
+ - 
+ - 
+
+
 
 
