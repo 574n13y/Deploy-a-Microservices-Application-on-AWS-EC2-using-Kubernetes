@@ -1,5 +1,9 @@
 # Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes
-How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by-Step 
+How to Deploy a Microservices Application on AWS EC2 using Kubernetes: 
+
+- *Setting up AWS EC2 Instances: We created two t2.medium instances on AWS EC2, one for the master node and one for the worker node. We also configured the security groups and SSH keys for these instances.
+- Installing Kubernetes on AWS EC2 Instances: We installed Kubernetes on both instances using kubeadm, kubelet, and kubectl. We also initialized the master node and joined the worker node to the cluster.
+- Deploying the Microservices Application on Kubernetes: We deployed a microservices application that consists of a MongoDB database and a taskmaster service. The taskmaster service is a web app that allows us to create and manage tasks. The app is written in Node.js and uses MongoDB as the database. We deployed the persistent volume and persistent volume claim, the MongoDB database, the ClusterIP service for MongoDB, the taskmaster service, and the NodePort service for taskmaster.*
 
  ![image](https://github.com/574n13y/Deploy-a-Microservices-Application-on-AWS-EC2-using-Kubernetes/assets/35293085/fdd348ff-60e2-4f0c-82ec-e75fbcef69cf)
 
@@ -105,7 +109,39 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes: A Step-by
   
   
  - Deploying the Microservices Application on Kubernetes
- - 
+ - Cloning the GitHub Repository
+   1. SSH into the master node by running:
+   2. Replace ~/.ssh/mykey.pem with the path to your key pair file and <master-node-ip> with the public IPv4 address of your master node instance.
+   3. Install git by running:
+   4. Clone the repository that contains the configuration files for our MongoDB database by running:
+
+
+ - Deploying the Persistent Volume and Persistent Volume Claim
+   1. Go to the mongodb-k8s directory by running:
+   2. Apply the YAML file that defines the persistent volume by running:
+   3. Apply the YAML file that defines the persistent volume claim by running:
+   4. Verify that the persistent volume and persistent volume claim are created and bound by running:
+      
+ - Deploying the MongoDB Database
+   1. Apply the YAML file that defines the deployment by running:
+   2. Verify that the deployment is created and running by running:
+   3. Verify that the pod is running by running:
+      
+ - Deploying the ClusterIP Service for MongoDB
+   1. Apply the YAML file that defines the service by running:
+   2. Verify that the service is created by running:
+      
+ - Deploying the Taskmaster Service
+   1. Apply the YAML file that defines the deployment by running:
+   2. Verify that the deployment is created and running by running:
+   3. Verify that the pods are running by running:
+      
+ - Deploying the NodePort Service for Taskmaster
+   1. Apply the YAML file that defines the service by running:
+   2. Verify that the service is created by running:
+   3. Access the taskmaster web app from your browser by going to http://<node-ip>:30007/. You can use any node’s IP address, either the master or the worker.
+   
+   
 
 
 
