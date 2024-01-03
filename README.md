@@ -111,7 +111,7 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes:
  - Deploying the Microservices Application on Kubernetes
  - Cloning the GitHub Repository
    1. SSH into the master node by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<master-node-ip> ``
-   2. Replace ~/.ssh/mykey.pem with the path to your key pair file and <master-node-ip> with the public IPv4 address of your master node instance.
+   2. Replace `~/.ssh/mykey.pem` with the path to your key pair file and `<master-node-ip>` with the public IPv4 address of your master node instance.
    3. Install git by running: `` sudo apt install git -y ``
    4. Clone the repository that contains the configuration files for our MongoDB database by running: `` https://github.com/574n13y/microservices-k8s.git ``
 
