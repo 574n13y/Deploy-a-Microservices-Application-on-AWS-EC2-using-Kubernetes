@@ -110,35 +110,41 @@ How to Deploy a Microservices Application on AWS EC2 using Kubernetes:
   
  - Deploying the Microservices Application on Kubernetes
  - Cloning the GitHub Repository
-   1. SSH into the master node by running:
+   1. SSH into the master node by running: `` ssh -i ~/.ssh/mykey.pem ubuntu@<master-node-ip> ``
    2. Replace ~/.ssh/mykey.pem with the path to your key pair file and <master-node-ip> with the public IPv4 address of your master node instance.
-   3. Install git by running:
-   4. Clone the repository that contains the configuration files for our MongoDB database by running:
+   3. Install git by running: `` sudo apt install git -y ``
+   4. Clone the repository that contains the configuration files for our MongoDB database by running: `` https://github.com/574n13y/microservices-k8s.git ``
 
 
  - Deploying the Persistent Volume and Persistent Volume Claim
-   1. Go to the mongodb-k8s directory by running:
-   2. Apply the YAML file that defines the persistent volume by running:
-   3. Apply the YAML file that defines the persistent volume claim by running:
-   4. Verify that the persistent volume and persistent volume claim are created and bound by running:
+   1. Go to the mongodb-k8s directory by running: `` cd microservices-k8s/flask-api/k8s ``
+   2. Apply the YAML file that defines the persistent volume by running: `` kubectl apply -f mongo-pv.yml ``
+   3. Apply the YAML file that defines the persistent volume claim by running: `` kubectl apply -f mongo-pvc.yml ``
+   4. Verify that the persistent volume and persistent volume claim are created and bound by running: `` kubectl get pv,pvc ``
       
  - Deploying the MongoDB Database
-   1. Apply the YAML file that defines the deployment by running:
-   2. Verify that the deployment is created and running by running:
-   3. Verify that the pod is running by running:
+   1. Apply the YAML file that defines the deployment by running: `` kubectl apply -f mongo.yml ``
+   2. Verify that the deployment is created and running by running: `` kubectl get deployments ``
+   3. Verify that the pod is running by running: `` kubectl get pods ``
       
  - Deploying the ClusterIP Service for MongoDB
-   1. Apply the YAML file that defines the service by running:
-   2. Verify that the service is created by running:
+   1. Apply the YAML file that defines the service by running: `` kubectl apply -f mongo-svc.yml ``
+   2. Verify that the service is created by running: `` kubectl get services ``
       
  - Deploying the Taskmaster Service
-   1. Apply the YAML file that defines the deployment by running:
-   2. Verify that the deployment is created and running by running:
-   3. Verify that the pods are running by running:
+   1. Apply the YAML file that defines the deployment by running: `` kubectl apply -f taskmaster.yml ``
+   2. Verify that the deployment is created and running by running: `` kubectl get deployments ``
+   3. Verify that the pods are running by running: `` kubectl get pods ``
       
  - Deploying the NodePort Service for Taskmaster
    1. Apply the YAML file that defines the service by running:
+      ```
+      kubectl apply -f taskmaster-svc.yml
+      ```
    2. Verify that the service is created by running:
+      ```
+      kubectl get services
+      ```
    3. Access the taskmaster web app from your browser by going to http://<node-ip>:30007/. You can use any node’s IP address, either the master or the worker.
    
    
